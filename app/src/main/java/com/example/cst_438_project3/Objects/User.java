@@ -2,6 +2,7 @@ package com.example.cst_438_project3.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.cst_438_project3.DB.AppDatabase;
@@ -9,36 +10,52 @@ import com.example.cst_438_project3.DB.AppDatabase;
 @Entity(tableName = AppDatabase.USER_TABLE)
 public class User {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
-    private String mUsername;
+    private int UserID;
 
-    private String mPassword;
 
+    @NonNull
+    private String username;
+    @NonNull
+    private String password;
+
+
+    public User() {}
+
+    @Ignore
     public User(String username, String password) {
-        mUsername = username;
-        mPassword = password;
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {
-        return mUsername;
+        return username;
     }
 
-    public void setUsername(String mUsername) {
-        this.mUsername = mUsername;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return mPassword;
+        return password;
     }
 
-    public void setPassword(String mPassword) {
-        this.mPassword = mPassword;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(int userID) {
+        UserID = userID;
     }
 
     @Override
     public String toString() {
         return
-                "Username: " + mUsername + " || Password:" + mPassword + '\n';
+                "Username: " + username + " || Password:" + password + '\n';
     }
 }
