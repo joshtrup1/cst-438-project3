@@ -13,21 +13,33 @@ import java.util.List;
 @Dao
 public interface UserDAO {
 
+
+
     @Update
-    void update(User... users);
+    void update(User users);
 
     @Insert
-    void insert(User... users);
+    void insert(User users);
 
     @Delete
-    void delete(User... user);
+    void delete(User user);
 
-    @Query("SELECT * FROM " + AppDatabase.USER_TABLE )
+    @Query("select * from userTable")
     List<User> getAllUsers();
 
-    //pull a specific item from the database
-    @Query("SELECT * FROM " + AppDatabase.USER_TABLE  + " WHERE mUsername = :username")
-    User getUserWithUsername(String username);
+    @Query("select * from userTable where username = :username")
+    User getUserByName(String username);
+
+    //pull a user from the DB by ID
+    @Query("select * from userTable where UserID = :UserID")
+    User getUserByID(int UserID);
+
+
+    @Query("select * from userTable where username = :username and password= :password")
+    User login(String username, String password);
+
+
+
 }
 
 
