@@ -1,8 +1,7 @@
-package com.group.a.gradeapp;
+package com.example.cst_438_project3;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.util.TypedValue;
 import android.widget.Toast;
 
 import java.util.Calendar;
