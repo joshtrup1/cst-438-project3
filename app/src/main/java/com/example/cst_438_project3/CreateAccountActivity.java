@@ -32,13 +32,15 @@ public class CreateAccountActivity extends AppCompatActivity {
 
 
 
-                if (userName.equals("")||passWord.equals("")){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateAccountActivity.this);
-                    builder.setMessage("Please fill all fields");
-                    builder.setPositiveButton("OK", null);
-                    builder.show();
-                    return;
-                }
+//                if (userName.equals("")||passWord.equals("")){
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateAccountActivity.this);
+//                    builder.setMessage("Please fill all fields");
+//                    builder.setPositiveButton("OK", null);
+//                    builder.show();
+//                    return;
+//                }
+
+                //test comment for commit
 
 
 
@@ -57,15 +59,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                     if(!checkvalid(username) || !checkvalid(password)) {
                         TextView msg = findViewById(R.id.notify);
                         msg.setText(" Invalid username or password.");
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(CreateAccountActivity.this);
-                        //builder.setTitle("Error.");
-                        builder.setPositiveButton("Continue to main menu", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                            }
-                        });
                         return;
                     }
 
