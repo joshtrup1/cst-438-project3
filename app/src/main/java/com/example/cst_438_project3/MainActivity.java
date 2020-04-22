@@ -37,6 +37,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button login_button = findViewById(R.id.login);
+        login_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // call the login activity
+                Log.d("mainActivity", "onClick for login called");
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
 
 
         Button exit_button = findViewById(R.id.exit);
