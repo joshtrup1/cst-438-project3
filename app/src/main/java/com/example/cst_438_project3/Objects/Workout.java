@@ -1,0 +1,65 @@
+package com.example.cst_438_project3.Objects;
+
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "workout")
+public class Workout {
+
+    @PrimaryKey
+    private int userID;
+    private String tow; //type of workout
+    private String reps;
+    private String startTime;
+    private String endTime;
+
+    public Workout(String tow, String reps, String startTime, String endTime, int userID){
+        this.tow = tow;
+        this.reps = reps;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.userID = userID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID){
+        this.userID = userID;
+    }
+
+    public String getTow() {
+        return tow;
+    }
+
+
+    public void setTow(String tow) {
+        this.tow = tow;
+    }
+
+    public String getReps(){
+        return reps;
+    }
+
+    public void setReps(String reps){
+        this.reps = reps;
+    }
+
+    public java.lang.String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public java.lang.String getEndTime() {
+        return endTime;
+    }
+    public void setEndTime(String endTime){
+        this.endTime = endTime;
+    }
+}
