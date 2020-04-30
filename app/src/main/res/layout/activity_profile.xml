@@ -48,4 +48,22 @@
 
         </RelativeLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Calendar"
+        android:layout_below="@id/profile_view"/>
+
+    <Button
+        android:id="@+id/weightProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Weight Tracker"
+        android:layout_below="@id/calendar"/>
 </RelativeLayout>
