@@ -15,6 +15,13 @@ android:orientation="vertical">
         android:textAlignment="center"
         android:textSize="30sp" />
 
+    <TextView
+        android:id="@+id/rules"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "Credentials must contain one upper case letter and one number."
+        android:textSize="12sp" />
+
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
