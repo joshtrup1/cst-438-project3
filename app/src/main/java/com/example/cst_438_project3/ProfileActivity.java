@@ -65,6 +65,15 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
                 openWeightTracker();
             }
         });
+
+        //weight log
+        Button button3 = (Button) findViewById(R.id.weightLog);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWeightLog();
+            }
+        });
     }
 
     @Override
@@ -84,7 +93,11 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
 
     public void openWeightTracker(){
         Intent intent = new Intent(this, WeightTracker.class);
-        //intent.putExtra(selectedDate, );
+        startActivity(intent);
+    }
+
+    public void openWeightLog(){
+        Intent intent = new Intent(this, WeightLog.class);
         startActivity(intent);
     }
 
