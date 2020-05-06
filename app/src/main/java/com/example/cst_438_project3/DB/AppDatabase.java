@@ -7,8 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.cst_438_project3.Objects.User;
+import com.example.cst_438_project3.Objects.Workout;
 
-@Database(entities = {User.class}, version =1, exportSchema = false)
+@Database(entities = {User.class, Workout.class}, version =1, exportSchema = false)
 
 
 
@@ -18,10 +19,10 @@ public abstract class AppDatabase extends RoomDatabase {
 
     //daos
     public abstract UserDAO userDAO();
-
+    public abstract WorkoutDAO workoutDAO();
     //tables
-    public static final String USER_TABLE ="userTable";
-
+    public static final String USER_TABLE = "userTable";
+    public static final String WORKOUT_TABLE = "workoutTable";
 
 
 
@@ -33,7 +34,7 @@ public abstract class AppDatabase extends RoomDatabase {
                     AppDatabase.class,
                     "FitnessApp Database") // database name
                     .allowMainThreadQueries()
-                    //.fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration()
                     .build();
         }
 
