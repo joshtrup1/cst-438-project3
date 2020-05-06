@@ -7,10 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.cst_438_project3.Objects.User;
+import com.example.cst_438_project3.Objects.WeightLog;
 
-@Database(entities = {User.class}, version =1, exportSchema = false)
-
-
+@Database(entities = {User.class, WeightLog.class}, version =1, exportSchema = false)
 
 public abstract class AppDatabase extends RoomDatabase {
 

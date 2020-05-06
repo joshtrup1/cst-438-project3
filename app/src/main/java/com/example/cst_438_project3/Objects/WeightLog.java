@@ -34,6 +34,14 @@ public class WeightLog {
         this.weight = weight;
     }
 
+    public int getWeightLogID() {
+        return WeightLogID;
+    }
+
+    public void setWeightLogID(int weightLogID) {
+        this.WeightLogID = weightLogID;
+    }
+
     @Override
     public String toString() {
         return

@@ -26,8 +26,8 @@ public interface WeightLogDAO {
     List<WeightLog> getAllWeightLogs();
 
     @Query("select * from weightLogTable where weightLogID = :WeightLogID")
-    User getWeightLogByID(float WeightLogID);
+    WeightLog getWeightLogByID(float WeightLogID);
 
     @Query("select * from weightLogTable where weight = :weight")
-    User getWeightLogByWeight(float weight);
+    WeightLog getWeightLogByWeight(float weight);
 }
