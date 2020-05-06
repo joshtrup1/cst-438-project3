@@ -18,9 +18,11 @@ public abstract class AppDatabase extends RoomDatabase {
 
     //daos
     public abstract UserDAO userDAO();
+    public abstract WeightLogDAO weightLogDAO();
 
     //tables
     public static final String USER_TABLE ="userTable";
+    public static final String WEIGHT_LOG_TABLE ="weightLogTable";
 
 
 
