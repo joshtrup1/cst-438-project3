@@ -75,4 +75,13 @@
         android:layout_centerVertical="true"
         android:text="Weight Log"
         android:layout_below="@id/weightProgress"/>
+
+    <Button
+        android:id="@+id/stepCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Step Counter"
+        android:layout_below="@id/weightLog"/>
 </RelativeLayout>

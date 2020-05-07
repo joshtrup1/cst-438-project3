@@ -7,6 +7,7 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -74,6 +75,21 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
                 openWeightLog();
             }
         });
+
+        //step counter
+        Button step_counter = findViewById(R.id.stepCounter);
+        step_counter.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // call the login activity
+                Log.d("ProfileActivity", "onClick for login called");
+                Intent intent = new Intent(ProfileActivity.this, StepCounterActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
 
     @Override
