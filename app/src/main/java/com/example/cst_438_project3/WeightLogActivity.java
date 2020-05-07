@@ -1,7 +1,9 @@
 package com.example.cst_438_project3;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -58,5 +60,19 @@ public class WeightLogActivity extends AppCompatActivity {
         WeightLog newWeightLog = new WeightLog (currWeight, user.getUserID());
         //insert into activity
         weight_log_dao.insert(newWeightLog);
+
+        // inform user that the weight has been saved
+        AlertDialog.Builder builder = new AlertDialog.Builder(WeightLogActivity.this);
+        builder.setTitle("Entry successfully saved.");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 }
