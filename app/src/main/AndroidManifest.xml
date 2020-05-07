@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".StepCounterActivity"></activity>
         <activity android:name=".WeightLog" />
+  
+        <activity android:name=".WeightLogActivity"></activity>
         <activity android:name=".WeightTracker" />
         <activity android:name=".WorkoutMenu" />
 

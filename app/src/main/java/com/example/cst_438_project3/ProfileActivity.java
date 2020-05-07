@@ -24,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
 
     TextView usernameTextView;
 
+    Integer username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,8 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         //Get current logged in user
         User user = AppDatabase.getAppDatabase(ProfileActivity.this).
                 userDAO().getUserByID(user_id.get());
+
+        username = user.getUserID();
 
         //setText for username
         usernameTextView = findViewById(R.id.username);
@@ -103,17 +106,20 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         //send Date to the workoutMenu activity
         Intent intent = new Intent(this, WorkoutMenu.class);
         intent.putExtra(selectedDate, currentDateString);
+        intent.putExtra("user_id", username);
         startActivity(intent);
 
     }
 
     public void openWeightTracker(){
         Intent intent = new Intent(this, WeightTracker.class);
+        intent.putExtra("user_id", username);
         startActivity(intent);
     }
 
     public void openWeightLog(){
-        Intent intent = new Intent(this, WeightLog.class);
+        Intent intent = new Intent(ProfileActivity.this, WeightLogActivity.class);
+        intent.putExtra("user_id", username);
         startActivity(intent);
     }
 

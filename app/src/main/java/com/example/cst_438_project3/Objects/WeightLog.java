@@ -1,3 +1,4 @@
+//TODO: Add the UserID to WeightLog and modify accordingly
 package com.example.cst_438_project3.Objects;
 
 import androidx.annotation.NonNull;
@@ -17,13 +18,16 @@ public class WeightLog {
     @NonNull
     private float weight;
 
+    @NonNull
+    private int userID;
 
 
     public WeightLog() {}
 
     @Ignore
-    public WeightLog(float weight) {
+    public WeightLog(float weight, int userID) {
         this.weight = weight;
+        this.userID = userID;
     }
 
     public float getWeight() {
@@ -40,6 +44,14 @@ public class WeightLog {
 
     public void setWeightLogID(int weightLogID) {
         this.WeightLogID = weightLogID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     @Override
