@@ -66,4 +66,13 @@
         android:layout_centerVertical="true"
         android:text="Weight Tracker"
         android:layout_below="@id/calendar"/>
+
+    <Button
+        android:id="@+id/change_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Change Password"
+        android:layout_below="@id/weightProgress"/>
 </RelativeLayout>
