@@ -15,10 +15,20 @@ import android.widget.TextView;
 import com.example.cst_438_project3.DB.AppDatabase;
 import com.example.cst_438_project3.DB.UserDAO;
 import com.example.cst_438_project3.Objects.User;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptionsExtension;
+import com.google.android.gms.fitness.Fitness;
+import com.google.android.gms.fitness.FitnessOptions;
+import com.google.android.gms.fitness.data.DataType;
+import com.google.android.gms.fitness.request.SensorRequest;
+import com.google.android.gms.tasks.Task;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         Button exit_button = findViewById(R.id.exit);
         exit_button.setOnClickListener(new View.OnClickListener(){
             // call to exit the application
@@ -61,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
 
 

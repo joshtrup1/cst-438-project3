@@ -7,6 +7,7 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
 
     TextView usernameTextView;
 
+    Integer username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,8 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         //Get current logged in user
         User user = AppDatabase.getAppDatabase(ProfileActivity.this).
                 userDAO().getUserByID(user_id.get());
+
+        username = user.getUserID();
 
         //setText for username
         usernameTextView = findViewById(R.id.username);
@@ -65,6 +69,30 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
                 openWeightTracker();
             }
         });
+
+        //weight log
+        Button button3 = (Button) findViewById(R.id.weightLog);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWeightLog();
+            }
+        });
+
+        //step counter
+        Button step_counter = findViewById(R.id.stepCounter);
+        step_counter.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // call the login activity
+                Log.d("ProfileActivity", "onClick for login called");
+                Intent intent = new Intent(ProfileActivity.this, StepCounterActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
 
     @Override
@@ -78,13 +106,20 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         //send Date to the workoutMenu activity
         Intent intent = new Intent(this, WorkoutMenu.class);
         intent.putExtra(selectedDate, currentDateString);
+        intent.putExtra("user_id", username);
         startActivity(intent);
 
     }
 
     public void openWeightTracker(){
         Intent intent = new Intent(this, WeightTracker.class);
-        //intent.putExtra(selectedDate, );
+        intent.putExtra("user_id", username);
+        startActivity(intent);
+    }
+
+    public void openWeightLog(){
+        Intent intent = new Intent(ProfileActivity.this, WeightLogActivity.class);
+        intent.putExtra("user_id", username);
         startActivity(intent);
     }
 
