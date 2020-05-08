@@ -7,8 +7,6 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -24,7 +22,6 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
     public static final String selectedDate = "com.example.cst_438_project3.selectedDate";
 
     TextView usernameTextView;
-    int userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +43,6 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         User user = AppDatabase.getAppDatabase(ProfileActivity.this).
                 userDAO().getUserByID(user_id.get());
 
-        //get user id from Login
-        userID = user.getUserID();
-
         //setText for username
         usernameTextView = findViewById(R.id.username);
         usernameTextView.setText(user.getUsername());
@@ -69,19 +63,6 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
             @Override
             public void onClick(View v) {
                 openWeightTracker();
-            }
-        });
-
-        //Change password
-        Button button3 = (Button) findViewById(R.id.change_password);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, EditProfile.class);
-                intent.putExtra("user_id", userID);
-                finish();
-                Log.d("Profile", "start Edit Profile Intent");
-                startActivity(intent);
             }
         });
     }

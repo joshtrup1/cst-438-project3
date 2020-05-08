@@ -38,9 +38,6 @@ public interface UserDAO {
     @Query("select * from userTable where username = :username and password= :password")
     User login(String username, String password);
 
-    @Query("UPDATE userTable SET password = :password where UserID = :UserID")   // Update session_name column of all saved sessions
-    void updatePassword(String password, int UserID);
-
 
 
 }
