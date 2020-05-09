@@ -118,7 +118,7 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
 
         //send Date to the workoutMenu activity
         Intent intent = new Intent(this, WorkoutMenu.class);
-        intent.putExtra(selectedDate, currentDateString);
+        intent.putExtra("selectedDate", currentDateString);
         intent.putExtra("user_id", username);
         startActivity(intent);
 
