@@ -92,6 +92,19 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
             }
         });
 
+        //Change password
+        Button changePW = (Button) findViewById(R.id.change_password);
+        changePW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, EditProfile.class);
+                intent.putExtra("user_id", username);
+                finish();
+                Log.d("Profile", "start Edit Profile Intent");
+                startActivity(intent);
+            }
+        });
+
 
     }
 
