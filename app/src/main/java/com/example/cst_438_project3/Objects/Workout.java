@@ -14,12 +14,14 @@ public class Workout {
     private String reps;
     private String startTime;
     private String endTime;
+    private  String date;
 
-    public Workout(String tow, String reps, String startTime, String endTime, int userID){
+    public Workout(String tow, String reps, String startTime, String endTime, String date, int userID){
         this.tow = tow;
         this.reps = reps;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.date = date;
         this.userID = userID;
     }
 
@@ -62,4 +64,6 @@ public class Workout {
     public void setEndTime(String endTime){
         this.endTime = endTime;
     }
+    public void setDate(String date) {this.date = date;}
+    public String getDate() {return date;}
 }

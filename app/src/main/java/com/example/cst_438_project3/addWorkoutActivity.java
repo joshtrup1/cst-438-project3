@@ -24,6 +24,7 @@ public class addWorkoutActivity extends AppCompatActivity {
     private TextView end;
     private int userID;
     private TextView reps;
+    private TextView date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

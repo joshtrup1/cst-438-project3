@@ -4,22 +4,19 @@ package com.example.cst_438_project3;
 
 
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-//import android.support.annotation.NonNull;
-//import android.support.v4.content.ContextCompat;
-
-import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-
-
-
+import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.github.lzyzsd.circleprogress.ArcProgress;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -33,9 +30,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-
-import static java.text.DateFormat.getDateInstance;
-import static java.text.DateFormat.getTimeInstance;
+import androidx.core.content.ContextCompat;
+import java.text.NumberFormat;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 
@@ -53,7 +51,15 @@ public class StepCounter extends AppCompatActivity {
     public ArcProgress mRunningProgress;
     public TextView mRunningCalories, mRunningActive, mRunningDistance;
 
-    GoogleApiClient mClient;
+    GoogleSignInAccount mClient;
+    // Configure sign-in to request the user's ID, email address, and basic
+    // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+
+
+
+
+    //mClient = GoogleSignIn.getClient(this, gso);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,15 @@ public class StepCounter extends AppCompatActivity {
         mRunningCalories = (TextView)findViewById(R.id.runningCaloriesTextView);
         mRunningActive = (TextView)findViewById(R.id.runningActiveTextView);
         mRunningDistance = (TextView)findViewById(R.id.runningDistanceTextView);
+        //SignInButton signInButton = findViewById(R.id.sign_in_button);
+
+
+
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+  //              .requestEmail()
+    //            .build();
+      //  GoogleSignInClient mmClient = GoogleSignIn.getClient(this, gso);
+
 
 
 
