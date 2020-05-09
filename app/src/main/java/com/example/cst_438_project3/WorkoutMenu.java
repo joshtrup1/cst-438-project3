@@ -8,9 +8,12 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.cst_438_project3.DB.AppDatabase;
+import com.example.cst_438_project3.Objects.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class WorkoutMenu extends AppCompatActivity {
 
@@ -19,11 +22,30 @@ public class WorkoutMenu extends AppCompatActivity {
     FloatingActionButton editWorkoutButton;
     FloatingActionButton deleteWorkoutButton;
 
+    String selectedDate;
+
 //    private ArrayList<Workout> workouts = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_menu);
+//Get extras from Login
+        final AtomicInteger user_id = new AtomicInteger(-1);
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras != null) {
+                user_id.set(extras.getInt("user_id"));
+            }
+        } else {
+            user_id.set((int) savedInstanceState.getSerializable("user_id"));
+        }
+
+        //Get current logged in user
+        User user = AppDatabase.getAppDatabase(WorkoutMenu.this).
+                userDAO().getUserByID(user_id.get());
+
+        //retrieve the date
+        selectedDate = getIntent().getStringExtra("selectedDate");
 
         //retrieve all the users workouts with the selected date
         //push to array
@@ -58,6 +80,9 @@ public class WorkoutMenu extends AppCompatActivity {
     }
     private void refreshDisplay(){
         //append workouts in the array to the textView
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(selectedDate + '\n');
+        mainDisplay.setText(stringBuilder.toString());
     }
 
     void addWorkout(){
