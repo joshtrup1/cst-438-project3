@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".addWorkoutActivity"></activity>
+        <activity android:name=".StepCounter" ></activity>
 
     </application>
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>

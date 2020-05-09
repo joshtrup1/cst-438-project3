@@ -8,6 +8,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import com.github.lzyzsd.circleprogress.ArcProgress;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.fitness.Fitness;
 import com.google.android.gms.fitness.FitnessOptions;
@@ -34,6 +36,8 @@ import androidx.core.content.ContextCompat;
 import java.text.NumberFormat;
 import android.widget.Button;
 import android.widget.Toast;
+//import com.google.android.gms.auth.api.signin.internal.
+import android.view.View;
 
 
 
@@ -41,12 +45,15 @@ import android.widget.Toast;
 
 
 
-public class StepCounter extends AppCompatActivity {
+public class StepCounter extends AppCompatActivity implements View.OnClickListener {
 
 
     final private int REQUEST_CODE_ASK_PERMISSION = 124;
     public static final String TAG = "StepCounter";
     private static final int REQUEST_OAUTH_REQUEST_CODE = 0x1001;
+    GoogleSignInClient mmClient;
+    private static int RC_SIGN_IN = 100;
+
 
     public ArcProgress mRunningProgress;
     public TextView mRunningCalories, mRunningActive, mRunningDistance;
@@ -72,17 +79,17 @@ public class StepCounter extends AppCompatActivity {
         mRunningCalories = (TextView)findViewById(R.id.runningCaloriesTextView);
         mRunningActive = (TextView)findViewById(R.id.runningActiveTextView);
         mRunningDistance = (TextView)findViewById(R.id.runningDistanceTextView);
-        //SignInButton signInButton = findViewById(R.id.sign_in_button);
+        SignInButton signInButton = findViewById(R.id.sign_in_button);
+        findViewById(R.id.sign_in_button).setOnClickListener(this);
 
 
 
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-  //              .requestEmail()
-    //            .build();
-      //  GoogleSignInClient mmClient = GoogleSignIn.getClient(this, gso);
 
 
-
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+         mmClient = GoogleSignIn.getClient(this, gso);
 
 
 
@@ -132,6 +139,24 @@ public class StepCounter extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.sign_in_button:
+                signIn();
+                break;
+            // ...
+        }
+    }
+
+    private void signIn() {
+        Intent signInIntent = mmClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+
+
+
     /** Records step data by requesting a subscription to background step data. */
     public void subscribeStepCount() {
         // To create a subscription, invoke the Recording API. As soon as the subscription is
@@ -164,6 +189,9 @@ public class StepCounter extends AppCompatActivity {
                             }
                         });
     }
+
+
+
 
 
 

@@ -24,7 +24,7 @@ public class addWorkoutActivity extends AppCompatActivity {
     private TextView end;
     private int userID;
     private TextView reps;
-    private TextView date;
+    private TextView dateOfWorkout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -43,6 +43,7 @@ public class addWorkoutActivity extends AppCompatActivity {
         reps = findViewById(R.id.rep);
         start = findViewById(R.id.start_time);
         end = findViewById(R.id.end_time);
+        dateOfWorkout = findViewById(R.id.workout_date);
 
         submitButton = findViewById(R.id.addworkoutButton);
 
@@ -63,9 +64,10 @@ public class addWorkoutActivity extends AppCompatActivity {
         String r = reps.getText().toString(); //reps
         String st = start.getText().toString();
         String finish = end.getText().toString();
+        String date = dateOfWorkout.getText().toString();
 
         if(workout.length() != 0 && r.length() != 0 && st.length() != 0 && finish.length() != 0){
-            Workout w = new Workout(workout,r, st, finish, userID);
+            Workout w = new Workout(workout,r, st, finish,date, userID);
             mWorkoutDao.insert(w);
             finish();
         } else{
