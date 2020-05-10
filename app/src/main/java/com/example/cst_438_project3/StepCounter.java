@@ -1,5 +1,9 @@
 package com.example.cst_438_project3;
 
+
+
+
+
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -12,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,7 +37,6 @@ import androidx.core.content.ContextCompat;
 import java.text.NumberFormat;
 import android.widget.Button;
 import android.widget.Toast;
-//import com.google.android.gms.auth.api.signin.internal;
 import android.view.View;
 
 
@@ -85,7 +89,7 @@ public class StepCounter extends AppCompatActivity implements View.OnClickListen
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-         mmClient = GoogleSignIn.getClient(this, gso);
+        mmClient = GoogleSignIn.getClient(this, gso);
 
 
 
@@ -141,7 +145,7 @@ public class StepCounter extends AppCompatActivity implements View.OnClickListen
             case R.id.sign_in_button:
                 signIn();
                 break;
-            // ...
+
         }
     }
 
@@ -149,6 +153,7 @@ public class StepCounter extends AppCompatActivity implements View.OnClickListen
         Intent signInIntent = mmClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
 
 
 
