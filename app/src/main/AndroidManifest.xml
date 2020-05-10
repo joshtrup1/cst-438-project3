@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".EditProfile"></activity>
-        <activity android:name=".StepCounterActivity" />
         <activity android:name=".WeightLogActivity" />
         <activity android:name=".WeightTracker" />
         <activity android:name=".WorkoutMenu" />
