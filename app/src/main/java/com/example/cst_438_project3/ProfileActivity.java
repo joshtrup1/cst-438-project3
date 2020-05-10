@@ -120,6 +120,7 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         Intent intent = new Intent(this, WorkoutMenu.class);
         intent.putExtra("selectedDate", currentDateString);
         intent.putExtra("user_id", username);
+        Log.d("calendar", "user id: " + username);
         startActivity(intent);
 
     }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -56,6 +57,7 @@ public class WorkoutMenu extends AppCompatActivity {
                 userDAO().getUserByID(user_id.get());
 
         userID = user_id.get();
+        Log.d("calendar", "user Id in WorkoutMenu (onCreate): " + userID);
 
         //retrieve the date
         selectedDate = getIntent().getStringExtra("selectedDate");
@@ -109,8 +111,9 @@ public class WorkoutMenu extends AppCompatActivity {
 
     void addWorkout(){
         Intent i = new Intent(this, addWorkoutActivity.class);
-        i.putExtra("userId", userID);
+        i.putExtra("user_id", userID);
         i.putExtra("selectedDate", selectedDate);
+        Log.d("calendar", "user Id in WorkoutMenu (addWorkout function): " + userID);
         startActivity(i);
         finish();
     }
