@@ -26,6 +26,6 @@ import java.util.List;
      List<Workout> getAllWorkouts();
 
      @Query("SELECT * FROM " + AppDatabase.WORKOUT_TABLE + " WHERE userID = :id")
-     List<Workout> getusrWorkouts(String id) ;
+     List<Workout> getusrWorkouts(int id) ;
 
  }
