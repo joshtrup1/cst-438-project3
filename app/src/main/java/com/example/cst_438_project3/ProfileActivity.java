@@ -116,6 +116,7 @@ public class ProfileActivity extends AppCompatActivity implements DatePickerDial
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
+        Log.d("profileActivity", "onClick for create account called");
         //send Date to the workoutMenu activity
         Intent intent = new Intent(this, WorkoutMenu.class);
         intent.putExtra("selectedDate", currentDateString);
