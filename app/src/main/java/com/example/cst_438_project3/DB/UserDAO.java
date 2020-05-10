@@ -10,9 +10,7 @@ import com.example.cst_438_project3.Objects.User;
 import java.util.List;
 
 @Dao
-public interface UserDAO {
-
-
+public interface    UserDAO {
 
     @Update
     void update(User users);
