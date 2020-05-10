@@ -3,6 +3,7 @@ package com.example.cst_438_project3;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,9 +32,9 @@ public class addWorkoutActivity extends AppCompatActivity {
     private TextView end;
     private int userID;
     private TextView reps;
-    User user;
+    //User user;
     String selectedDate;
-    int id;
+    Integer id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -50,11 +51,13 @@ public class addWorkoutActivity extends AppCompatActivity {
             user_id.set((int) savedInstanceState.getSerializable("user_id"));
         }
 
+
         //Get current logged in user
         User user = AppDatabase.getAppDatabase(addWorkoutActivity.this).
                 userDAO().getUserByID(user_id.get());
 
         id = user_id.get();
+        Log.d("calendar", "user Id in addWorkout (onCreate): " + id);
 
         tow = findViewById(R.id.typeofworkout);
         reps = findViewById(R.id.rep);
