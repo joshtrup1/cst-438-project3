@@ -11,17 +11,23 @@
         android:theme="@style/AppTheme">
         <activity android:name=".EditProfile"></activity>
         <activity android:name=".StepCounterActivity" />
-        <activity android:name=".WeightLog" />
         <activity android:name=".WeightLogActivity" />
         <activity android:name=".WeightTracker" />
         <activity android:name=".WorkoutMenu" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".addWorkoutActivity"></activity>
+        <activity android:name=".StepCounter" ></activity>
+         <activity android:name=".StepCounterData" ></activity>
+
+
         <activity
             android:name=".ProfileActivity"
             android:label="@string/app_name" />
@@ -39,6 +45,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
     </application>
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
 
 </manifest>
