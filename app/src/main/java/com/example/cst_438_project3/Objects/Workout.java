@@ -9,7 +9,11 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "workoutTable")
 public class Workout {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    private int WorkoutID;
+
+
     private int userID;
     private String tow; //type of workout
     private String reps;
@@ -38,6 +42,13 @@ public class Workout {
         return tow;
     }
 
+    public int getWorkoutID() {
+        return WorkoutID;
+    }
+
+    public void setWorkoutID(int workoutID) {
+        WorkoutID = workoutID;
+    }
 
     public void setTow(String tow) {
         this.tow = tow;
@@ -59,6 +70,7 @@ public class Workout {
         this.startTime = startTime;
     }
 
+
     public java.lang.String getEndTime() {
         return endTime;
     }
@@ -67,5 +79,18 @@ public class Workout {
     }
     public void setDate(String date) {this.date = date;}
     public String getDate() {return date;}
+
+    @Override
+    public String toString() {
+        return "Workout{" +
+                "WorkoutID=" + WorkoutID +
+                ", userID=" + userID +
+                ", tow='" + tow + '\'' +
+                ", reps='" + reps + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }
 
