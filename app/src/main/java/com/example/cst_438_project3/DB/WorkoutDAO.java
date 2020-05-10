@@ -1,3 +1,27 @@
+
+
+// @Dao
+// public interface WorkoutDAO {
+
+//     @Insert
+//     public void insert(Workout workout);
+
+//     @Delete
+//     public void delete(Workout workout);
+
+//     @Update
+//     public void update(Workout workout);
+
+//     @Query("SELECT * FROM " + AppDatabase.WORKOUT_TABLE)
+//     List<Workout> getAllWorkouts();
+
+//     @Query("SELECT * FROM " + AppDatabase.WORKOUT_TABLE + " WHERE userID = :id")
+//     List<Workout> getusrWorkouts(String id) ;
+
+
+
+// }
+
 package com.example.cst_438_project3.DB;
 
 import androidx.room.Dao;
@@ -29,3 +53,4 @@ public interface WorkoutDAO {
     @Query("select * from workoutTable where WorkoutID = :WorkoutID")
     Workout getWorkoutByID(int WorkoutID);
 }
+
