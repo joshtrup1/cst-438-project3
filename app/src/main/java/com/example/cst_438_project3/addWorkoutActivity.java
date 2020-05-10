@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.cst_438_project3.DB.UserDAO;
+import com.example.cst_438_project3.Objects.User;
 import com.example.cst_438_project3.Objects.Workout;
 
 import androidx.room.Room;
@@ -34,10 +37,10 @@ public class addWorkoutActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userID = intent.getIntExtra("userID",1);
 
-        mWorkoutDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.UName)
-                .allowMainThreadQueries()
-                .build()
-                .getWorkoutDAO();
+//        mWorkoutDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.WORKOUT_TABLE)
+//                .allowMainThreadQueries()
+//                .build()
+//                .getWorkoutDAO();
 
         tow = findViewById(R.id.typeofworkout);
         reps = findViewById(R.id.rep);
@@ -60,16 +63,23 @@ public class addWorkoutActivity extends AppCompatActivity {
     }
 
     private void addWorkout() {
-        String workout = tow.getText().toString();
+        String type_of_workout = tow.getText().toString();
         String r = reps.getText().toString(); //reps
         String st = start.getText().toString();
         String finish = end.getText().toString();
         String date = dateOfWorkout.getText().toString();
 
-        if(workout.length() != 0 && r.length() != 0 && st.length() != 0 && finish.length() != 0){
-            Workout w = new Workout(workout,r, st, finish,date, userID);
-            mWorkoutDao.insert(w);
+        if(type_of_workout.length() != 0 && r.length() != 0 && st.length() != 0 && finish.length() != 0){
+
+            Workout newWorkout = new Workout(type_of_workout,r,st,finish,date,userID);
+
+            WorkoutDAO workout_dao = AppDatabase.getAppDatabase(addWorkoutActivity.this).WorkoutDAO();
+            workout_dao.insert(newWorkout);
             finish();
+
+//            Workout w = new Workout(workout,r, st, finish,date, userID);
+//            mWorkoutDao.insert(w);
+//            finish();
         } else{
             Toast.makeText(this, "Please enter all fields", Toast.LENGTH_LONG).show();
         }
