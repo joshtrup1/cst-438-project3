@@ -3,8 +3,10 @@ package com.example.cst_438_project3;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,87 +15,65 @@ import android.widget.TextView;
 import com.example.cst_438_project3.DB.AppDatabase;
 import com.example.cst_438_project3.DB.UserDAO;
 import com.example.cst_438_project3.Objects.User;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptionsExtension;
+import com.google.android.gms.fitness.Fitness;
+import com.google.android.gms.fitness.FitnessOptions;
+import com.google.android.gms.fitness.data.DataType;
+import com.google.android.gms.fitness.request.SensorRequest;
+import com.google.android.gms.tasks.Task;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView mainDisplay;
-
-    EditText username;
-    EditText password;
-
-    Button submit;
-    Button clear;
-
-    UserDAO mUserDAO;
-    List<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainDisplay = findViewById(R.id.mainGymLogDisplay);
-        mainDisplay.setMovementMethod(new ScrollingMovementMethod());
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-
-        submit = findViewById(R.id.mainSubmitButton);
-        clear = findViewById(R.id.mainClearButton);
-
-        mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.UName)
-                .allowMainThreadQueries()
-                .build()
-                .getUserDao();
-
-        refreshDisplay();
-        submit.setOnClickListener(new View.OnClickListener() {
+        Button create_account_button = findViewById(R.id.create_account);
+        create_account_button.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-                enterInfo();
-                refreshDisplay();
+            public void onClick(View v) {
+                // call the create account activity
+                Log.d("mainActivity", "onClick for create account called");
+                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                startActivity(intent);
+
             }
         });
 
-        clear.setOnClickListener(new View.OnClickListener() {
+        Button login_button = findViewById(R.id.login);
+        login_button.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-                clearDatabase();
-                refreshDisplay();
+            public void onClick(View v) {
+                // call the login activity
+                Log.d("mainActivity", "onClick for login called");
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+
             }
         });
-    }
 
-    private void refreshDisplay(){
-        users = mUserDAO.getAllUsers();
 
-        if(!users.isEmpty()){
-            StringBuilder stringBuilder = new StringBuilder();
+        Button exit_button = findViewById(R.id.exit);
+        exit_button.setOnClickListener(new View.OnClickListener(){
+            // call to exit the application
+            @Override
+            public void onClick(View v) {
+                Log.d("Exit", "onClick for exit called");
+                finish();  // make it actually close app from anywhere !!
 
-            for(User u: users){
-                stringBuilder.append(u.toString());
             }
+        });
 
-            mainDisplay.setText(stringBuilder.toString());
-        } else {
-            mainDisplay.setText("No accounts in the database");
-        }
-    }
 
-    private void enterInfo(){
-        String newUsername = username.getText().toString();
-        String newPassword = password.getText().toString();
 
-        mUserDAO.insert(new User(newUsername, newPassword));
-    }
 
-    private void clearDatabase(){
-        if(! users.isEmpty()){
-            //clear the DB
-            for(User u: users){
-                mUserDAO.delete(u);
-            }
-        }
     }
 }
+
