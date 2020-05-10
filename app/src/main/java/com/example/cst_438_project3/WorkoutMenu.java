@@ -93,19 +93,26 @@ public class WorkoutMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 deleteWorkout();
+                refreshDisplay();
             }
         });
     }
     private void refreshDisplay(){
+        boolean found = false;
         if(! workouts.isEmpty()){
             StringBuilder stringBuilder = new StringBuilder();
             for(Workout w: workouts){
-//                if(w.getUserID() == userID)
-                stringBuilder.append(w.toString());
+                if(w.getUserID() == userID){
+                    if(w.getDate().equals(selectedDate)){
+                        stringBuilder.append(w.toString());
+                        found = true;
+                    }
+                }
+            }
+            if(!found){
+                stringBuilder.append("No Workouts Available");
             }
             mainDisplay.setText(stringBuilder.toString());
-        } else {
-            mainDisplay.setText("No Workouts Available");
         }
     }
 
