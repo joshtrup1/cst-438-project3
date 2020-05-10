@@ -82,15 +82,13 @@ public class Workout {
 
     @Override
     public String toString() {
-        return "Workout{" +
-                "WorkoutID=" + WorkoutID +
-                ", userID=" + userID +
-                ", tow='" + tow + '\'' +
-                ", reps='" + reps + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", date='" + date + '\'' +
-                '}';
+        return  "Workout ID: " + WorkoutID + "\n" +
+                "User ID: " + userID + "\n" +
+                "Type of Workout: " + tow + "\n" +
+                "Reps: " + reps + "\n" +
+                "Start Time: " + startTime + "\n" +
+                "End Time: " + endTime + "\n" +
+                "Date: " + date + "\n" +  "\n";
     }
 }
 
