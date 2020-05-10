@@ -30,22 +30,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                 EditText userName = findViewById(R.id.username);
                 EditText passWord = findViewById(R.id.password);
 
-
-
-//                if (userName.equals("")||passWord.equals("")){
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateAccountActivity.this);
-//                    builder.setMessage("Please fill all fields");
-//                    builder.setPositiveButton("OK", null);
-//                    builder.show();
-//                    return;
-//                }
-
-                //test comment for commit
-
-
-
-
-
                 User user = AppDatabase.getAppDatabase(CreateAccountActivity.this).
                         userDAO().getUserByName(userName.getText().toString());
 

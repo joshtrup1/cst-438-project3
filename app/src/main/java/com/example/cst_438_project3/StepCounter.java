@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -36,7 +37,6 @@ import androidx.core.content.ContextCompat;
 import java.text.NumberFormat;
 import android.widget.Button;
 import android.widget.Toast;
-//import com.google.android.gms.auth.api.signin.internal.
 import android.view.View;
 
 
@@ -145,7 +145,7 @@ public class StepCounter extends AppCompatActivity implements View.OnClickListen
             case R.id.sign_in_button:
                 signIn();
                 break;
-            // ...
+
         }
     }
 
@@ -153,6 +153,7 @@ public class StepCounter extends AppCompatActivity implements View.OnClickListen
         Intent signInIntent = mmClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
 
 
 
